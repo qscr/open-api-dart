@@ -1,7 +1,7 @@
-import 'package:conduit_codable/conduit_codable.dart';
-import 'package:conduit_open_api/src/object.dart';
-import 'package:conduit_open_api/src/v2/operation.dart';
-import 'package:conduit_open_api/src/v2/parameter.dart';
+import 'package:conduit_codable_fork/conduit_codable.dart';
+import 'package:conduit_open_api_fork/src/object.dart';
+import 'package:conduit_open_api_fork/src/v2/operation.dart';
+import 'package:conduit_open_api_fork/src/v2/parameter.dart';
 
 /// Represents a path (also known as a route) in the OpenAPI specification.
 class APIPath extends APIObject {

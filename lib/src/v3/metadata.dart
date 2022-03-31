@@ -1,5 +1,5 @@
-import 'package:conduit_codable/conduit_codable.dart';
-import 'package:conduit_open_api/src/object.dart';
+import 'package:conduit_codable_fork/conduit_codable.dart';
+import 'package:conduit_open_api_fork/src/object.dart';
 
 /// The object provides metadata about the API.
 ///
@@ -57,7 +57,8 @@ class APIInfo extends APIObject {
 
     if (title == null || version == null) {
       throw ArgumentError(
-          "APIInfo must have non-null values for: 'title', 'version'.");
+        "APIInfo must have non-null values for: 'title', 'version'.",
+      );
     }
 
     object.encode("title", title);

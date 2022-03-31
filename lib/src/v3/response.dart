@@ -1,16 +1,15 @@
-import 'package:conduit_codable/conduit_codable.dart';
-import 'package:conduit_open_api/src/object.dart';
-import 'package:conduit_open_api/src/v3/header.dart';
-import 'package:conduit_open_api/src/v3/media_type.dart';
-import 'package:conduit_open_api/src/v3/schema.dart';
+import 'package:conduit_codable_fork/conduit_codable.dart';
+import 'package:conduit_open_api_fork/src/object.dart';
+import 'package:conduit_open_api_fork/src/v3/header.dart';
+import 'package:conduit_open_api_fork/src/v3/media_type.dart';
+import 'package:conduit_open_api_fork/src/v3/schema.dart';
 
 /// Describes a single response from an API Operation, including design-time, static links to operations based on the response.
 class APIResponse extends APIObject {
   APIResponse(this.description, {this.content, this.headers});
   APIResponse.empty();
   APIResponse.schema(this.description, APISchemaObject schema,
-      {Iterable<String> contentTypes = const ["application/json"],
-      this.headers}) {
+      {Iterable<String> contentTypes = const ["application/json"], this.headers}) {
     content = contentTypes.fold({}, (prev, elem) {
       prev![elem] = APIMediaType(schema: schema);
       return prev;
@@ -86,7 +85,8 @@ class APIResponse extends APIObject {
 
     if (description == null) {
       throw ArgumentError(
-          "APIResponse must have non-null values for: 'description'.");
+        "APIResponse must have non-null values for: 'description'.",
+      );
     }
 
     object.encode("description", description);

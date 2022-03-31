@@ -1,10 +1,10 @@
-import 'package:conduit_codable/conduit_codable.dart';
-import 'package:conduit_open_api/src/object.dart';
-import 'package:conduit_open_api/src/v3/components.dart';
-import 'package:conduit_open_api/src/v3/metadata.dart';
-import 'package:conduit_open_api/src/v3/path.dart';
-import 'package:conduit_open_api/src/v3/security.dart';
-import 'package:conduit_open_api/src/v3/server.dart';
+import 'package:conduit_codable_fork/conduit_codable.dart';
+import 'package:conduit_open_api_fork/src/object.dart';
+import 'package:conduit_open_api_fork/src/v3/components.dart';
+import 'package:conduit_open_api_fork/src/v3/metadata.dart';
+import 'package:conduit_open_api_fork/src/v3/path.dart';
+import 'package:conduit_open_api_fork/src/v3/security.dart';
+import 'package:conduit_open_api_fork/src/v3/server.dart';
 
 /// This is the root document object of the OpenAPI document.
 class APIDocument extends APIObject {
@@ -58,14 +58,11 @@ class APIDocument extends APIObject {
     super.decode(object);
 
     version = object.decode("openapi") ?? "3.0.0";
-    info =
-        object.decodeObject("info", () => APIInfo.empty()) ?? APIInfo.empty();
-    servers =
-        object.decodeObjects("servers", () => APIServerDescription.empty());
+    info = object.decodeObject("info", () => APIInfo.empty()) ?? APIInfo.empty();
+    servers = object.decodeObjects("servers", () => APIServerDescription.empty());
     paths = object.decodeObjectMap("paths", () => APIPath());
     components = object.decodeObject("components", () => APIComponents());
-    security =
-        object.decodeObjects("security", () => APISecurityRequirement.empty());
+    security = object.decodeObjects("security", () => APISecurityRequirement.empty());
     tags = object.decodeObjects("tags", () => APITag.empty());
   }
 
@@ -75,7 +72,8 @@ class APIDocument extends APIObject {
 
     if (!info.isValid || paths == null) {
       throw ArgumentError(
-          "APIDocument must have values for: 'version', 'info' and 'paths'.");
+        "APIDocument must have values for: 'version', 'info' and 'paths'.",
+      );
     }
 
     object.encode("openapi", version);

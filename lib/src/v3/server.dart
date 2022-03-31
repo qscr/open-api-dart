@@ -1,5 +1,5 @@
-import 'package:conduit_codable/conduit_codable.dart';
-import 'package:conduit_open_api/src/object.dart';
+import 'package:conduit_codable_fork/conduit_codable.dart';
+import 'package:conduit_open_api_fork/src/object.dart';
 
 /// An object representing a Server.
 class APIServerDescription extends APIObject {
@@ -28,8 +28,7 @@ class APIServerDescription extends APIObject {
 
     url = object.decode("url");
     description = object.decode("description");
-    variables =
-        object.decodeObjectMap("variables", () => APIServerVariable.empty());
+    variables = object.decodeObjectMap("variables", () => APIServerVariable.empty());
   }
 
   @override
@@ -38,7 +37,8 @@ class APIServerDescription extends APIObject {
 
     if (url == null) {
       throw ArgumentError(
-          "APIServerDescription must have non-null values for: 'url'.");
+        "APIServerDescription must have non-null values for: 'url'.",
+      );
     }
 
     object.encode("url", url);
@@ -49,8 +49,7 @@ class APIServerDescription extends APIObject {
 
 /// An object representing a Server Variable for server URL template substitution.
 class APIServerVariable extends APIObject {
-  APIServerVariable(this.defaultValue,
-      {this.availableValues, this.description});
+  APIServerVariable(this.defaultValue, {this.availableValues, this.description});
 
   APIServerVariable.empty();
 
@@ -83,7 +82,8 @@ class APIServerVariable extends APIObject {
 
     if (defaultValue == null) {
       throw ArgumentError(
-          "APIServerVariable must have non-null values for: 'defaultValue'.");
+        "APIServerVariable must have non-null values for: 'defaultValue'.",
+      );
     }
 
     object.encode("enum", availableValues);

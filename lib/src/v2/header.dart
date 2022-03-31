@@ -1,6 +1,6 @@
-import 'package:conduit_codable/conduit_codable.dart';
-import 'package:conduit_open_api/src/v2/property.dart';
-import 'package:conduit_open_api/src/v2/types.dart';
+import 'package:conduit_codable_fork/conduit_codable.dart';
+import 'package:conduit_open_api_fork/src/v2/property.dart';
+import 'package:conduit_open_api_fork/src/v2/types.dart';
 
 /// Represents a header in the OpenAPI specification.
 class APIHeader extends APIProperty {

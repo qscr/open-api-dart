@@ -1,8 +1,8 @@
-import 'package:conduit_codable/conduit_codable.dart';
-import 'package:conduit_open_api/src/object.dart';
-import 'package:conduit_open_api/src/v3/document.dart';
-import 'package:conduit_open_api/src/v3/media_type.dart';
-import 'package:conduit_open_api/src/v3/schema.dart';
+import 'package:conduit_codable_fork/conduit_codable.dart';
+import 'package:conduit_open_api_fork/src/object.dart';
+import 'package:conduit_open_api_fork/src/v3/document.dart';
+import 'package:conduit_open_api_fork/src/v3/media_type.dart';
+import 'package:conduit_open_api_fork/src/v3/schema.dart';
 
 /// There are four possible parameter locations specified by the in field.
 ///
@@ -218,7 +218,8 @@ class APIParameter extends APIObject {
 
     if (name == null || location == null) {
       throw ArgumentError(
-          "APIParameter must have non-null values for: 'name', 'location'.");
+        "APIParameter must have non-null values for: 'name', 'location'.",
+      );
     }
 
     object.encode("name", name);

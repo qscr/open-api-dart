@@ -1,15 +1,10 @@
-import 'package:conduit_codable/cast.dart' as cast;
-import 'package:conduit_codable/conduit_codable.dart';
-import 'package:conduit_open_api/src/object.dart';
-import 'package:conduit_open_api/src/v2/parameter.dart';
+import 'package:conduit_codable_fork/cast.dart' as cast;
+import 'package:conduit_codable_fork/conduit_codable.dart';
+import 'package:conduit_open_api_fork/src/object.dart';
+import 'package:conduit_open_api_fork/src/v2/parameter.dart';
 
 /// Represents a OAuth 2.0 security scheme flow in the OpenAPI specification.
-enum APISecuritySchemeFlow {
-  implicit,
-  password,
-  application,
-  authorizationCode
-}
+enum APISecuritySchemeFlow { implicit, password, application, authorizationCode }
 
 class APISecuritySchemeFlowCodec {
   static APISecuritySchemeFlow? decode(String? flow) {
@@ -78,8 +73,7 @@ class APISecurityScheme extends APIObject {
   }
 
   @override
-  Map<String, cast.Cast> get castMap =>
-      {"scopes": const cast.Map(cast.string, cast.string)};
+  Map<String, cast.Cast> get castMap => {"scopes": const cast.Map(cast.string, cast.string)};
 
   @override
   void decode(KeyedArchive object) {

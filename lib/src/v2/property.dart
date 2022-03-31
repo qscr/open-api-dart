@@ -1,14 +1,8 @@
-import 'package:conduit_codable/conduit_codable.dart';
-import 'package:conduit_open_api/src/object.dart';
-import 'package:conduit_open_api/src/v2/types.dart';
+import 'package:conduit_codable_fork/conduit_codable.dart';
+import 'package:conduit_open_api_fork/src/object.dart';
+import 'package:conduit_open_api_fork/src/v2/types.dart';
 
-enum APISchemaRepresentation {
-  primitive,
-  array,
-  object,
-  structure,
-  unknownOrInvalid
-}
+enum APISchemaRepresentation { primitive, array, object, structure, unknownOrInvalid }
 
 enum APICollectionFormat { csv, ssv, tsv, pipes }
 
@@ -79,8 +73,7 @@ class APIProperty extends APIObject {
 
     type = APITypeCodec.decode(object.decode("type"));
     format = object.decode("format");
-    collectionFormat =
-        APICollectionFormatCodec.decode(object.decode("collectionFormat"));
+    collectionFormat = APICollectionFormatCodec.decode(object.decode("collectionFormat"));
     defaultValue = object.decode("default");
     maximum = object.decode("maximum");
     exclusiveMaximum = object.decode("exclusiveMaximum");
@@ -103,7 +96,9 @@ class APIProperty extends APIObject {
     object.encode("type", APITypeCodec.encode(type));
     object.encode("format", format);
     object.encode(
-        "collectionFormat", APICollectionFormatCodec.encode(collectionFormat));
+      "collectionFormat",
+      APICollectionFormatCodec.encode(collectionFormat),
+    );
     object.encode("default", defaultValue);
     object.encode("maximum", maximum);
     object.encode("exclusiveMaximum", exclusiveMaximum);

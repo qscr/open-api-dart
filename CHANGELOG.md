@@ -1,3 +1,6 @@
+# 1.0.0-b9
+- Fix invalid cast List<String?> to List?
+
 # 1.0.0-b8
 - Fix null-checking issue, tested against Conduit 
 
@@ -54,7 +57,7 @@ nnbd migration
 ## 1.0.0
 
 - Adds support for OpenAPI 3.0
-- Splits Swagger (2.0) and OpenAPI (3.0) into 'package:conduit_open_api/v2.dart' and 'package:conduit_open_api/v3.dart'.
+- Splits Swagger (2.0) and OpenAPI (3.0) into 'package:conduit_open_api_fork/v2.dart' and 'package:conduit_open_api_fork/v3.dart'.
 
 ## 0.9.1
 

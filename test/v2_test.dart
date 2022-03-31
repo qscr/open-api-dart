@@ -4,7 +4,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:conduit_open_api/v2.dart';
+import 'package:conduit_open_api_fork/v2.dart';
 import 'package:dcli/dcli.dart';
 import 'package:test/test.dart';
 
@@ -42,8 +42,7 @@ void main() {
       expect(doc!.paths!.length, greaterThan(0));
       expect(doc!.paths!.length, original!["paths"].length);
 
-      final Map<String, dynamic> originalPaths =
-          original!["paths"] as Map<String, dynamic>;
+      final Map<String, dynamic> originalPaths = original!["paths"] as Map<String, dynamic>;
       doc!.paths!.forEach((k, v) {
         expect(originalPaths.keys.contains(k), true);
       });
@@ -58,22 +57,16 @@ void main() {
       expect(getNamespace.produces, contains("application/json"));
       expect(getNamespace.produces, contains("application/yaml"));
       expect(getNamespace.parameters!.length, 8);
-      expect(
-          getNamespace.parameters!
-              .firstWhere((p) => p!.name == "limit")!
-              .location,
+      expect(getNamespace.parameters!.firstWhere((p) => p!.name == "limit")!.location,
           APIParameterLocation.query);
-      expect(
-          getNamespace.parameters!.firstWhere((p) => p!.name == "limit")!.type,
-          APIType.integer);
+      expect(getNamespace.parameters!.firstWhere((p) => p!.name == "limit")!.type, APIType.integer);
       expect(getNamespace.responses!.keys, contains("401"));
       expect(getNamespace.responses!.keys, contains("200"));
 
       final postNamespace = namespacePath.operations["post"];
       expect(postNamespace!.parameters!.length, 1);
       expect(postNamespace.parameters!.first!.name, "body");
-      expect(
-          postNamespace.parameters!.first!.location, APIParameterLocation.body);
+      expect(postNamespace.parameters!.first!.location, APIParameterLocation.body);
     });
 
     test("Sample - Reference", () {
@@ -84,8 +77,8 @@ void main() {
       expect(schema!.description, contains("APIVersions lists the"));
       expect(schema.isRequired, ["versions", "serverAddressByClientCIDRs"]);
       expect(
-          schema.properties!["serverAddressByClientCIDRs"]!.items!
-              .properties!["clientCIDR"]!.description,
+          schema.properties!["serverAddressByClientCIDRs"]!.items!.properties!["clientCIDR"]!
+              .description,
           contains("The CIDR"));
     });
 

@@ -1,7 +1,7 @@
-import 'package:conduit_codable/conduit_codable.dart';
-import 'package:conduit_open_api/src/object.dart';
-import 'package:conduit_open_api/src/v3/operation.dart';
-import 'package:conduit_open_api/src/v3/parameter.dart';
+import 'package:conduit_codable_fork/conduit_codable.dart';
+import 'package:conduit_open_api_fork/src/object.dart';
+import 'package:conduit_open_api_fork/src/v3/operation.dart';
+import 'package:conduit_open_api_fork/src/v3/parameter.dart';
 
 /// Describes the operations available on a single path.
 ///
@@ -62,23 +62,12 @@ class APIPath extends APIObject {
     summary = object.decode("summary");
     description = object.decode("description");
     parameters =
-        object.decodeObjects("parameters", () => APIParameter.empty()) ??
-            <APIParameter?>[];
+        object.decodeObjects("parameters", () => APIParameter.empty()) ?? <APIParameter?>[];
 
-    final methodNames = [
-      "get",
-      "put",
-      "post",
-      "delete",
-      "options",
-      "head",
-      "patch",
-      "trace"
-    ];
+    final methodNames = ["get", "put", "post", "delete", "options", "head", "patch", "trace"];
     for (final methodName in methodNames) {
       if (object.containsKey(methodName)) {
-        operations[methodName] =
-            object.decodeObject(methodName, () => APIOperation.empty());
+        operations[methodName] = object.decodeObject(methodName, () => APIOperation.empty());
       }
     }
   }

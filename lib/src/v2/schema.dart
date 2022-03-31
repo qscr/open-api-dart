@@ -1,6 +1,6 @@
-import 'package:conduit_codable/conduit_codable.dart';
-import 'package:conduit_codable/cast.dart' as cast;
-import 'package:conduit_open_api/src/v2/property.dart';
+import 'package:conduit_codable_fork/cast.dart' as cast;
+import 'package:conduit_codable_fork/conduit_codable.dart';
+import 'package:conduit_open_api_fork/src/v2/property.dart';
 
 /// Represents a schema object in the OpenAPI specification.
 class APISchemaObject extends APIProperty {
@@ -31,8 +31,7 @@ class APISchemaObject extends APIProperty {
   }
 
   @override
-  Map<String, cast.Cast> get castMap =>
-      {"required": const cast.List(cast.string)};
+  Map<String, cast.Cast> get castMap => {"required": const cast.List(cast.string)};
 
   @override
   void decode(KeyedArchive json) {
@@ -45,8 +44,7 @@ class APISchemaObject extends APIProperty {
     readOnly = json.decode("readOnly") ?? false;
 
     items = json.decodeObject("items", () => APISchemaObject());
-    additionalProperties =
-        json.decodeObject("additionalProperties", () => APISchemaObject());
+    additionalProperties = json.decodeObject("additionalProperties", () => APISchemaObject());
     properties = json.decodeObjectMap("properties", () => APISchemaObject());
   }
 

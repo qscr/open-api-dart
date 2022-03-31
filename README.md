@@ -7,13 +7,13 @@ conduit_open_api supports both v2 and v3 of the open_api specification.
 To use v2 import:
 
 ```dart
-import 'package:conduit_open_api/v2.dart';
+import 'package:conduit_open_api_fork/v2.dart';
 ```
 
 To use v3 import:
 
 ```dart
-import 'package:conduit_open_api/v3.dart';
+import 'package:conduit_open_api_fork/v3.dart';
 ```
 
 You can us v2 and v3 within a single project.
@@ -23,7 +23,7 @@ Example
 ---
 
 ```dart
-import 'package:conduit_open_api/v3.dart';
+import 'package:conduit_open_api_fork/v3.dart';
 
 
 final file = File("test/specs/kubernetes.json");

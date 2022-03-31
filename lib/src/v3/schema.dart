@@ -1,7 +1,7 @@
-import 'package:conduit_codable/cast.dart' as cast;
-import 'package:conduit_codable/conduit_codable.dart';
-import 'package:conduit_open_api/src/object.dart';
-import 'package:conduit_open_api/src/v3/types.dart';
+import 'package:conduit_codable_fork/cast.dart' as cast;
+import 'package:conduit_codable_fork/conduit_codable.dart';
+import 'package:conduit_open_api_fork/src/object.dart';
+import 'package:conduit_open_api_fork/src/v3/types.dart';
 
 enum APISchemaAdditionalPropertyPolicy {
   /// When [APISchemaObject] prevents properties other than those defined by [APISchemaObject.properties] from being included
@@ -23,8 +23,7 @@ class APISchemaObject extends APIObject {
   APISchemaObject.number() : type = APIType.number;
   APISchemaObject.integer() : type = APIType.integer;
   APISchemaObject.boolean() : type = APIType.boolean;
-  APISchemaObject.map(
-      {APIType? ofType, APISchemaObject? ofSchema, bool any = false})
+  APISchemaObject.map({APIType? ofType, APISchemaObject? ofSchema, bool any = false})
       : type = APIType.object {
     if (ofType != null) {
       additionalPropertySchema = APISchemaObject()..type = ofType;
@@ -33,18 +32,19 @@ class APISchemaObject extends APIObject {
     } else if (any) {
     } else {
       throw ArgumentError(
-          "Invalid 'APISchemaObject.map' with neither 'ofType', 'any' or 'ofSchema' specified.");
+        "Invalid 'APISchemaObject.map' with neither 'ofType', 'any' or 'ofSchema' specified.",
+      );
     }
   }
-  APISchemaObject.array({APIType? ofType, APISchemaObject? ofSchema})
-      : type = APIType.array {
+  APISchemaObject.array({APIType? ofType, APISchemaObject? ofSchema}) : type = APIType.array {
     if (ofType != null) {
       items = APISchemaObject()..type = ofType;
     } else if (ofSchema != null) {
       items = ofSchema;
     } else {
       throw ArgumentError(
-          "Invalid 'APISchemaObject.array' with neither 'ofType' or 'ofSchema' specified.");
+        "Invalid 'APISchemaObject.array' with neither 'ofType' or 'ofSchema' specified.",
+      );
     }
   }
   APISchemaObject.object(this.properties) : type = APIType.object;
@@ -242,8 +242,7 @@ class APISchemaObject extends APIObject {
   bool? deprecated;
 
   @override
-  Map<String, cast.Cast> get castMap =>
-      {"required": const cast.List(cast.string)};
+  Map<String, cast.Cast> get castMap => {"required": const cast.List(cast.string)};
 
   @override
   void decode(KeyedArchive object) {
@@ -333,11 +332,9 @@ class APISchemaObject extends APIObject {
 
     object.encodeObject("items", items);
     if (additionalPropertyPolicy != null || additionalPropertySchema != null) {
-      if (additionalPropertyPolicy ==
-          APISchemaAdditionalPropertyPolicy.disallowed) {
+      if (additionalPropertyPolicy == APISchemaAdditionalPropertyPolicy.disallowed) {
         object.encode("additionalProperties", false);
-      } else if (additionalPropertyPolicy ==
-          APISchemaAdditionalPropertyPolicy.freeForm) {
+      } else if (additionalPropertyPolicy == APISchemaAdditionalPropertyPolicy.freeForm) {
         object.encode("additionalProperties", true);
       } else {
         object.encodeObject("additionalProperties", additionalPropertySchema);
