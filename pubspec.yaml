@@ -1,5 +1,5 @@
 name: conduit_open_api_fork
-version: 1.0.0-b9
+version: 1.0.0-b10
 homepage: https://github.com/qscr/open-api-dart
 description: Data structures for OpenAPI (Swagger) specification. Reads and writes JSON specifications.
 environment:
